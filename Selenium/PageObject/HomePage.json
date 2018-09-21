@@ -1,0 +1,10 @@
+{
+  "shopByCategory": "//*[@id='nav-link-shopall']",
+  "televisions": "//a[text()='Televisions']",
+  "televisions": "//a[contains(text(),'Televisions')]",
+  "sonyTvs":"(//img[@alt='Sony TVs'])[1]",
+  "minPrice":"//input[@name='low-price']",
+  "maxPrice":"//input[@name='high-price']",
+  "goBtn":"//input[@value='Go' and @aria-labelledby='a-autoid-6-announce']"
+
+}
