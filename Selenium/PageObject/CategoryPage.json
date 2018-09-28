@@ -1,0 +1,9 @@
+{
+  "televisions": "//a[text()='Televisions']",
+  "homeEntertainmentSystems": "//a[text()='Home Entertainment Systems']",
+  "headphones": "//a[text()='Headphones']",
+  "speakers": "//a[text()='Speakers']",
+  "mP3MediaPlayersAccessories": "//a[text()='MP3, Media Players & Accessories']",
+  "cameras": "//a[text()='Cameras']",
+  "refrigerators": "//a[text()='Refrigerators']"
+}
