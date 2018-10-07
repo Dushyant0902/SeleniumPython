@@ -1,11 +1,13 @@
 import json
 from Selenium.Utils.SeleniumUtils import Utils
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as expected_conditions
 
 
 class HomePage(Utils):
-    def __init__(self, browser, timeout, new_session):
-        super().__init__(browser, timeout, new_session)
+    def __init__(self, driver, wait):
+        self.driver = driver
+        self.wait = wait
 
         with open("../PageObject/HomePage.json", "r") as file:
             self.xpath = json.load(file)
@@ -19,29 +21,29 @@ class HomePage(Utils):
         self.goBtn = self.xpath['goBtn']
 
     def click_on_shop_by_category(self):
-        self.wait.until(self.expected_conditions.element_to_be_clickable((By.XPATH, self.shopByCategory)))
+        self.wait.until(expected_conditions.element_to_be_clickable((By.XPATH, self.shopByCategory)))
         self.driver.find_element_by_xpath(self.shopByCategory).click()
 
     def click_on_television(self):
-        self.wait.until(self.expected_conditions.element_to_be_clickable((By.XPATH, self.televisions)))
+        self.wait.until(expected_conditions.element_to_be_clickable((By.XPATH, self.televisions)))
         self.driver.find_element_by_xpath(self.televisions).click()
 
     def click_on_sony_tvs(self):
-        self.wait.until(self.expected_conditions.element_to_be_clickable((By.XPATH, self.sonyTvs)))
+        self.wait.until(expected_conditions.element_to_be_clickable((By.XPATH, self.sonyTvs)))
         self.driver.find_element_by_xpath(self.sonyTvs)
 
     def enter_on_min_price(self, price):
-        self.wait.until(self.expected_conditions.presence_of_element_located((By.XPATH, self.minPrice)))
+        self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, self.minPrice)))
         self.driver.find_element_by_xpath(self.minPrice).clear()
         self.driver.find_element_by_xpath(self.minPrice).send_keys(price)
 
     def enter_on_max_price(self, price):
-        self.wait.until(self.expected_conditions.presence_of_element_located((By.XPATH, self.maxPrice)))
+        self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, self.maxPrice)))
         self.driver.find_element_by_xpath(self.maxPrice).clear()
         self.driver.find_element_by_xpath(self.maxPrice).send_keys(price)
 
     def click_on_go_btn(self):
-        self.wait.until(self.expected_conditions.element_to_be_clickable((By.XPATH, self.goBtn)))
+        self.wait.until(expected_conditions.element_to_be_clickable((By.XPATH, self.goBtn)))
         self.driver.find_element_by_xpath(self.goBtn).click()
 
     def get_title(self):

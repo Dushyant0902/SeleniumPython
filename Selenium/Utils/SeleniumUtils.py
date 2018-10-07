@@ -4,8 +4,8 @@ from selenium.webdriver.support import expected_conditions as expected_condition
 
 
 class Utils:
-    def __init__(self, browser, timeout, new_session):
-        if new_session is True:
+    def __init__(self, browser, timeout, start_session):
+        if start_session:
             if browser in "ie":
                 self.driver = webdriver.Ie("../../drivers/IEDriverServer.exe")
 
@@ -18,15 +18,9 @@ class Utils:
             self.wait = WebDriverWait(self.driver, timeout)
             self.expected_conditions = expected_conditions
             self.driver.maximize_window()
-        else:
-            self.wait = self.get_wait()
-            self.driver = self.get_driver()
 
     def get_driver(self):
-        if not self.driver:
-            return None
-        else:
-            return self.driver
+        return self.driver
 
     def get_wait(self):
         return self.wait
@@ -40,8 +34,8 @@ class Utils:
     def get_url(self, url):
         self.driver.get(url)
 
-    def close(self):
-        self.driver.close()
+    def quit(self):
+        self.driver.quit()
 
     def get_title(self):
         return self.driver.title
